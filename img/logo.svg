@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="44" height="44" role="img" aria-label="SGV Autos">
+  <polygon points="32,3 57,17.5 57,46.5 32,61 7,46.5 7,17.5" fill="#21262E" stroke="#D98A2B" stroke-width="2"/>
+  <circle cx="32" cy="32" r="15" fill="none" stroke="#EFEFEA" stroke-width="2"/>
+  <g fill="#D98A2B">
+    <rect x="29.4" y="12.5" width="5.2" height="6" rx="1"/>
+    <rect x="29.4" y="45.5" width="5.2" height="6" rx="1"/>
+    <rect x="29.4" y="12.5" width="5.2" height="6" rx="1" transform="rotate(45 32 32)"/>
+    <rect x="29.4" y="45.5" width="5.2" height="6" rx="1" transform="rotate(45 32 32)"/>
+    <rect x="29.4" y="12.5" width="5.2" height="6" rx="1" transform="rotate(90 32 32)"/>
+    <rect x="29.4" y="45.5" width="5.2" height="6" rx="1" transform="rotate(90 32 32)"/>
+    <rect x="29.4" y="12.5" width="5.2" height="6" rx="1" transform="rotate(135 32 32)"/>
+    <rect x="29.4" y="45.5" width="5.2" height="6" rx="1" transform="rotate(135 32 32)"/>
+  </g>
+  <circle cx="32" cy="32" r="8.5" fill="#EFEFEA"/>
+  <text x="32" y="35.5" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="8.5" font-weight="700" fill="#21262E" text-anchor="middle">SGV</text>
+</svg>

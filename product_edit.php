@@ -2,6 +2,29 @@
 if (!isset($_COOKIE["USERNAME"])) {
     header("Location: ./login.php");
 }
+
+// Realizar consulta del producto que viene por GET
+if (isset($_COOKIE["PRODUCTS"])) {
+    $products = json_decode($_COOKIE["PRODUCTS"], true);
+} else {
+    require_once "./data.php";
+}
+$descripcion = "";
+
+foreach ($products as $product) {
+    if ($product["Codigo"] == $_GET["product"]) {
+        $codigo = $product["Codigo"];
+        $descripcion = $product["Descripcion"];
+        $existencia = $product["Existencia"];
+        $precio = $product["Precio"];
+        break;
+    }
+}
+
+if ($descripcion == "") {
+    header("Location: ./products.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -9,7 +32,7 @@ if (!isset($_COOKIE["USERNAME"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuarios - SGV Autos</title>
+    <title>Editar producto - SGV Autos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,8 +53,8 @@ if (!isset($_COOKIE["USERNAME"])) {
 
                     <ul class="nav sgv-nav col-12 col-lg-auto ms-lg-4 me-lg-auto mb-2 justify-content-center mb-md-0">
                         <li><a href="./dashboard.php" class="nav-link">Inicio</a></li>
-                        <li><a href="./users.php" class="nav-link active">Usuarios</a></li>
-                        <li><a href="./products.php" class="nav-link">Productos</a></li>
+                        <li><a href="./users.php" class="nav-link">Usuarios</a></li>
+                        <li><a href="./products.php" class="nav-link active">Productos</a></li>
                         <li><a href="#" class="nav-link">Carrito</a></li>
                     </ul>
 
@@ -43,47 +66,31 @@ if (!isset($_COOKIE["USERNAME"])) {
         </header>
 
         <section class="container mt-4">
-            <div class="sgv-panel">
-                <div class="sgv-panel-title">
-                    <h3>Listado de usuarios</h3>
-                    <a href="./user_create.php" class="btn btn-success"><i class="bi bi-person-plus"></i> Nuevo</a>
-                </div>
+            <div class="sgv-panel" style="max-width: 560px;">
+                <h3>Editar producto</h3>
                 <hr>
 
-                <table class="table table-striped sgv-table align-middle mb-0">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nombre completo</th>
-                            <th scope="col">Usuario</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            if (isset($_COOKIE["USERS"])) {
-                                $db = json_decode($_COOKIE["USERS"], true);
-                            } else {
-                                require_once "./data.php";
-                            }
-                            $i = 1;
-                            foreach ($db as $user) {
-                        ?>
-                        <tr>
-                            <th scope="row"><?php echo $i; ?></th>
-                            <td><?php echo htmlspecialchars($user["Fullname"]); ?></td>
-                            <td><?php echo htmlspecialchars($user["Usuario"]); ?></td>
-                            <td>
-                                <a href="./user_edit.php?user=<?php echo urlencode($user["Usuario"]); ?>" class="btn btn-primary btn-sm">Editar</a>
-                                <a href="./user_delete.php?user=<?php echo urlencode($user["Usuario"]); ?>" class="btn btn-danger btn-sm">Eliminar</a>
-                            </td>
-                        </tr>
-                        <?php
-                                $i++;
-                            }
-                        ?>
-                    </tbody>
-                </table>
+                <form action="./product_update.php" method="post">
+                    <input type="hidden" name="product" value="<?php echo htmlspecialchars($_GET["product"]); ?>">
+                    <div class="mb-3">
+                        <label for="InputCodigo" class="form-label">Código</label>
+                        <input type="text" name="Codigo" class="form-control" id="InputCodigo" value="<?php echo htmlspecialchars($codigo); ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputDescripcion" class="form-label">Descripción</label>
+                        <input type="text" name="Descripcion" class="form-control" id="InputDescripcion" value="<?php echo htmlspecialchars($descripcion); ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputExistencia" class="form-label">Existencia</label>
+                        <input type="number" name="Existencia" class="form-control" id="InputExistencia" min="0" value="<?php echo htmlspecialchars($existencia); ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputPrecio" class="form-label">Precio</label>
+                        <input type="number" name="Precio" class="form-control" id="InputPrecio" min="0" step="0.01" value="<?php echo htmlspecialchars($precio); ?>">
+                    </div>
+                    <a href="./products.php" class="btn btn-danger">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </form>
             </div>
         </section>
 

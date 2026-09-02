@@ -1,20 +1,23 @@
 <!doctype html>
-<html lang="es" data-bs-theme="auto">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Carousel Template · Bootstrap v5.3</title>
-    <script src="./js/color-modes.js"></script>
-    <link href="./css/bootstrap.min.css" rel="stylesheet" />
-    <meta name="theme-color" content="#712cf9" />
-    <link href="./css/carousel.css" rel="stylesheet" />
+    <title>SGV Autos - Control de taller e inventario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
-    <header data-bs-theme="dark">
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <header class="sgv-header">
+      <nav class="navbar navbar-expand-md fixed-top" style="background-color: var(--sgv-graphite);">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Auto Stop</a>
+          <a class="sgv-brand text-decoration-none" href="./">
+            <img src="./img/logo.svg" alt="SGV Autos">
+            SGV Autos
+          </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -27,24 +30,21 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <ul class="nav sgv-nav me-auto mb-2 mb-md-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                <a class="nav-link active" aria-current="page" href="./">Inicio</a>
               </li>
-              <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li>
+              <li class="nav-item"><a class="nav-link" href="#caracteristicas">Qué hace</a></li>
             </ul>
             <div class="d-flex">
-              <a href="./login.php" class="btn btn-outline-success">Ingresar</a>
+              <a href="./login.php" class="btn btn-primary">Ingresar</a>
             </div>
           </div>
         </div>
       </nav>
     </header>
     <main>
-      <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+      <div id="myCarousel" class="carousel slide mb-5" data-bs-ride="carousel" style="margin-top: 56px;">
         <div class="carousel-indicators">
           <button
             type="button"
@@ -69,84 +69,48 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <svg
-              aria-hidden="true"
-              class="bd-placeholder-img"
-              height="100%"
-              preserveAspectRatio="xMidYMid slice"
-              width="100%"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                width="100%"
-                height="100%"
-                fill="var(--bs-secondary-color)"
-              ></rect>
-            </svg>
-            <div class="container">
-              <div class="carousel-caption text-start">
-                <h1>Example headline.</h1>
-                <p class="opacity-75">
-                  Some representative placeholder content for the first slide of
-                  the carousel.
-                </p>
-                <p>
-                  <a class="btn btn-lg btn-primary" href="#">Sign up today</a>
-                </p>
+            <div class="sgv-slide d-flex align-items-center">
+              <div class="container">
+                <div class="carousel-caption text-start position-relative">
+                  <h1>Tu taller, ordenado de verdad.</h1>
+                  <p class="opacity-75">
+                    Lleva el control de usuarios y del inventario de productos desde
+                    un solo panel, sin hojas de cálculo sueltas.
+                  </p>
+                  <p>
+                    <a class="btn btn-lg btn-primary" href="./login.php">Ingresar al panel</a>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-            <svg
-              aria-hidden="true"
-              class="bd-placeholder-img"
-              height="100%"
-              preserveAspectRatio="xMidYMid slice"
-              width="100%"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                width="100%"
-                height="100%"
-                fill="var(--bs-secondary-color)"
-              ></rect>
-            </svg>
-            <div class="container">
-              <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>
-                  Some representative placeholder content for the second slide
-                  of the carousel.
-                </p>
-                <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+            <div class="sgv-slide sgv-slide-alt d-flex align-items-center">
+              <div class="container">
+                <div class="carousel-caption position-relative">
+                  <h1>Inventario siempre al día.</h1>
+                  <p>
+                    Registra, edita y da de baja productos en segundos, con el
+                    código, la existencia y el precio siempre a la vista.
+                  </p>
+                  <p><a class="btn btn-lg btn-primary" href="./login.php">Ver panel de productos</a></p>
+                </div>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-            <svg
-              aria-hidden="true"
-              class="bd-placeholder-img"
-              height="100%"
-              preserveAspectRatio="xMidYMid slice"
-              width="100%"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                width="100%"
-                height="100%"
-                fill="var(--bs-secondary-color)"
-              ></rect>
-            </svg>
-            <div class="container">
-              <div class="carousel-caption text-end">
-                <h1>One more for good measure.</h1>
-                <p>
-                  Some representative placeholder content for the third slide of
-                  this carousel.
-                </p>
-                <p>
-                  <a class="btn btn-lg btn-primary" href="#">Browse gallery</a>
-                </p>
+            <div class="sgv-slide sgv-slide-amber d-flex align-items-center">
+              <div class="container">
+                <div class="carousel-caption text-end position-relative">
+                  <h1>Accesos por usuario.</h1>
+                  <p>
+                    Da de alta a cada miembro del equipo con su propio acceso
+                    y mantén el control de quién entra al sistema.
+                  </p>
+                  <p>
+                    <a class="btn btn-lg btn-primary" href="./login.php">Gestionar usuarios</a>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -158,7 +122,7 @@
           data-bs-slide="prev"
         >
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+          <span class="visually-hidden">Anterior</span>
         </button>
         <button
           class="carousel-control-next"
@@ -167,220 +131,66 @@
           data-bs-slide="next"
         >
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+          <span class="visually-hidden">Siguiente</span>
         </button>
       </div>
-      <!-- Marketing messaging and featurettes
-  ================================================== -->
-      <!-- Wrap the rest of the page in another container to center all the content. -->
-      <div class="container marketing">
-        <!-- Three columns of text below the carousel -->
+
+      <div class="container marketing" id="caracteristicas">
         <div class="row">
           <div class="col-lg-4">
-            <svg
-              aria-label="Placeholder"
-              class="bd-placeholder-img rounded-circle"
-              height="140"
-              preserveAspectRatio="xMidYMid slice"
-              role="img"
-              width="140"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Placeholder</title>
-              <rect
-                width="100%"
-                height="100%"
-                fill="var(--bs-secondary-color)"
-              ></rect>
-            </svg>
-            <h2 class="fw-normal">Heading</h2>
+            <div class="sgv-feature-icon"><i class="bi bi-people-fill fs-3"></i></div>
+            <h2 class="fw-normal h4">Usuarios</h2>
             <p>
-              Some representative placeholder content for the three columns of
-              text below the carousel. This is the first column.
-            </p>
-            <p>
-              <a class="btn btn-secondary" href="#">View details &raquo;</a>
+              Crea, edita y elimina cuentas de acceso para el equipo del taller,
+              cada una con su propio correo y contraseña.
             </p>
           </div>
-          <!-- /.col-lg-4 -->
           <div class="col-lg-4">
-            <svg
-              aria-label="Placeholder"
-              class="bd-placeholder-img rounded-circle"
-              height="140"
-              preserveAspectRatio="xMidYMid slice"
-              role="img"
-              width="140"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Placeholder</title>
-              <rect
-                width="100%"
-                height="100%"
-                fill="var(--bs-secondary-color)"
-              ></rect>
-            </svg>
-            <h2 class="fw-normal">Heading</h2>
+            <div class="sgv-feature-icon"><i class="bi bi-box-seam fs-3"></i></div>
+            <h2 class="fw-normal h4">Productos</h2>
             <p>
-              Another exciting bit of representative placeholder content. This
-              time, we've moved on to the second column.
-            </p>
-            <p>
-              <a class="btn btn-secondary" href="#">View details &raquo;</a>
+              Administra el catálogo completo: código, descripción, existencia
+              y precio de cada producto en inventario.
             </p>
           </div>
-          <!-- /.col-lg-4 -->
           <div class="col-lg-4">
-            <svg
-              aria-label="Placeholder"
-              class="bd-placeholder-img rounded-circle"
-              height="140"
-              preserveAspectRatio="xMidYMid slice"
-              role="img"
-              width="140"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Placeholder</title>
-              <rect
-                width="100%"
-                height="100%"
-                fill="var(--bs-secondary-color)"
-              ></rect>
-            </svg>
-            <h2 class="fw-normal">Heading</h2>
+            <div class="sgv-feature-icon"><i class="bi bi-speedometer2 fs-3"></i></div>
+            <h2 class="fw-normal h4">Panel de control</h2>
             <p>
-              And lastly this, the third column of representative placeholder
-              content.
-            </p>
-            <p>
-              <a class="btn btn-secondary" href="#">View details &raquo;</a>
+              Un vistazo rápido a cuántos usuarios y productos hay activos,
+              y cuántas unidades quedan disponibles.
             </p>
           </div>
-          <!-- /.col-lg-4 -->
         </div>
-        <!-- /.row -->
-        <!-- START THE FEATURETTES -->
+
         <hr class="featurette-divider" />
         <div class="row featurette">
           <div class="col-md-7">
             <h2 class="featurette-heading fw-normal lh-1">
-              First featurette heading.
-              <span class="text-body-secondary">It’ll blow your mind.</span>
+              Sin más cuadernos ni Excel desordenado.
+              <span class="text-body-secondary">Todo en un mismo lugar.</span>
             </h2>
             <p class="lead">
-              Some great placeholder content for the first featurette here.
-              Imagine some exciting prose here.
+              SGV Autos centraliza el registro de usuarios y el inventario de
+              repuestos, para que cualquiera del equipo encuentre la información
+              actualizada al instante.
             </p>
           </div>
           <div class="col-md-5">
-            <svg
-              aria-label="Placeholder: 500x500"
-              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-              height="500"
-              preserveAspectRatio="xMidYMid slice"
-              role="img"
-              width="500"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Placeholder</title>
-              <rect
-                width="100%"
-                height="100%"
-                fill="var(--bs-secondary-bg)"
-              ></rect>
-              <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">
-                500x500
-              </text>
-            </svg>
+            <img src="./img/hero.svg" alt="Ilustración de taller" class="img-fluid rounded mx-auto d-block">
           </div>
         </div>
         <hr class="featurette-divider" />
-        <div class="row featurette">
-          <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading fw-normal lh-1">
-              Oh yeah, it’s that good.
-              <span class="text-body-secondary">See for yourself.</span>
-            </h2>
-            <p class="lead">
-              Another featurette? Of course. More placeholder content here to
-              give you an idea of how this layout would work with some actual
-              real-world content in place.
-            </p>
-          </div>
-          <div class="col-md-5 order-md-1">
-            <svg
-              aria-label="Placeholder: 500x500"
-              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-              height="500"
-              preserveAspectRatio="xMidYMid slice"
-              role="img"
-              width="500"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Placeholder</title>
-              <rect
-                width="100%"
-                height="100%"
-                fill="var(--bs-secondary-bg)"
-              ></rect>
-              <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">
-                500x500
-              </text>
-            </svg>
-          </div>
-        </div>
-        <hr class="featurette-divider" />
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading fw-normal lh-1">
-              And lastly, this one.
-              <span class="text-body-secondary">Checkmate.</span>
-            </h2>
-            <p class="lead">
-              And yes, this is the last block of representative placeholder
-              content. Again, not really intended to be actually read, simply
-              here to give you a better view of what this would look like with
-              some actual content. Your content.
-            </p>
-          </div>
-          <div class="col-md-5">
-            <svg
-              aria-label="Placeholder: 500x500"
-              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-              height="500"
-              preserveAspectRatio="xMidYMid slice"
-              role="img"
-              width="500"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Placeholder</title>
-              <rect
-                width="100%"
-                height="100%"
-                fill="var(--bs-secondary-bg)"
-              ></rect>
-              <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">
-                500x500
-              </text>
-            </svg>
-          </div>
-        </div>
-        <hr class="featurette-divider" />
-        <!-- /END THE FEATURETTES -->
       </div>
-      <!-- /.container -->
       <!-- FOOTER -->
-      <footer class="container">
-        <p class="float-end"><a href="#">Back to top</a></p>
+      <footer class="container sgv-footer">
+        <p class="float-end"><a href="#">Volver arriba</a></p>
         <p>
-          &copy; 2017–2025 Company, Inc. &middot;
-          <a href="#">Privacy</a> &middot; <a href="#">Terms</a>
+          &copy; 2026 SGV Autos, Inc. &middot;
+          <a href="#">Privacidad</a> &middot; <a href="#">Términos</a>
         </p>
       </footer>
     </main>
-    <script
-      src="./js/bootstrap.bundle.min.js"
-      class="astro-vvvwv3sm"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>

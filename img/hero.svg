@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="100%" height="100%" role="img" aria-label="Ilustración de taller y control de inventario">
+  <rect x="0" y="0" width="640" height="360" fill="#21262E"/>
+
+  <!-- cuadricula de plano tecnico -->
+  <g stroke="#2E343D" stroke-width="1">
+    <path d="M0,40 H640 M0,80 H640 M0,120 H640 M0,160 H640 M0,200 H640 M0,240 H640 M0,280 H640 M0,320 H640"/>
+    <path d="M40,0 V360 M100,0 V360 M160,0 V360 M220,0 V360 M280,0 V360 M340,0 V360 M400,0 V360 M460,0 V360 M520,0 V360 M580,0 V360"/>
+  </g>
+
+  <!-- silueta de vehiculo, arte de linea generico -->
+  <g fill="none" stroke="#EFEFEA" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M95,235 
+             L120,235 
+             L150,190 
+             C170,175 205,168 235,168 
+             L360,168 
+             C392,168 420,178 445,198
+             L480,235
+             L495,235" />
+    <path d="M95,235 L470,235" />
+    <path d="M150,190 L160,168" />
+  </g>
+  <circle cx="175" cy="243" r="24" fill="#21262E" stroke="#D98A2B" stroke-width="4"/>
+  <circle cx="175" cy="243" r="7" fill="#D98A2B"/>
+  <circle cx="415" cy="243" r="24" fill="#21262E" stroke="#D98A2B" stroke-width="4"/>
+  <circle cx="415" cy="243" r="7" fill="#D98A2B"/>
+
+  <!-- lineas de cota, estilo plano -->
+  <g stroke="#8A8F98" stroke-width="1" stroke-dasharray="4 3">
+    <line x1="95" y1="255" x2="95" y2="300"/>
+    <line x1="495" y1="255" x2="495" y2="300"/>
+    <line x1="95" y1="292" x2="495" y2="292"/>
+  </g>
+  <text x="295" y="284" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#8A8F98" text-anchor="middle">REF. 001-A</text>
+
+  <!-- engranaje flotante -->
+  <g transform="translate(520,70)" fill="#D98A2B" opacity="0.9">
+    <circle r="18" fill="none" stroke="#D98A2B" stroke-width="3"/>
+    <circle r="6" fill="#D98A2B"/>
+    <g stroke="#D98A2B" stroke-width="3">
+      <line x1="0" y1="-24" x2="0" y2="-18"/>
+      <line x1="0" y1="24" x2="0" y2="18"/>
+      <line x1="-24" y1="0" x2="-18" y2="0"/>
+      <line x1="24" y1="0" x2="18" y2="0"/>
+      <line x1="17" y1="-17" x2="13" y2="-13"/>
+      <line x1="-17" y1="17" x2="-13" y2="13"/>
+      <line x1="-17" y1="-17" x2="-13" y2="-13"/>
+      <line x1="17" y1="17" x2="13" y2="13"/>
+    </g>
+  </g>
+
+  <!-- caja / repuesto flotante -->
+  <g transform="translate(90,80)" stroke="#D98A2B" stroke-width="2.5" fill="none">
+    <rect x="0" y="0" width="34" height="26" rx="2"/>
+    <path d="M0,8 H34 M17,8 V26"/>
+  </g>
+</svg>

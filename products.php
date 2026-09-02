@@ -2,26 +2,6 @@
 if (!isset($_COOKIE["USERNAME"])) {
     header("Location: ./login.php");
 }
-
-// Usuarios (para el indicador de la portada)
-if (isset($_COOKIE["USERS"])) {
-    $db = json_decode($_COOKIE["USERS"], true);
-} else {
-    require_once "./data.php";
-}
-$total_usuarios = count($db);
-
-// Productos (para el indicador y el resumen de inventario)
-if (isset($_COOKIE["PRODUCTS"])) {
-    $products = json_decode($_COOKIE["PRODUCTS"], true);
-} else {
-    require_once "./data.php";
-}
-$total_productos = count($products);
-$total_existencias = 0;
-foreach ($products as $product) {
-    $total_existencias += (int) $product["Existencia"];
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -29,7 +9,7 @@ foreach ($products as $product) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel - SGV Autos</title>
+    <title>Productos - SGV Autos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,9 +29,9 @@ foreach ($products as $product) {
                     </a>
 
                     <ul class="nav sgv-nav col-12 col-lg-auto ms-lg-4 me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="./dashboard.php" class="nav-link active">Inicio</a></li>
+                        <li><a href="./dashboard.php" class="nav-link">Inicio</a></li>
                         <li><a href="./users.php" class="nav-link">Usuarios</a></li>
-                        <li><a href="./products.php" class="nav-link">Productos</a></li>
+                        <li><a href="./products.php" class="nav-link active">Productos</a></li>
                         <li><a href="#" class="nav-link">Carrito</a></li>
                     </ul>
 
@@ -62,53 +42,14 @@ foreach ($products as $product) {
             </div>
         </header>
 
-        <section class="sgv-hero py-5">
-            <div class="container">
-                <div class="row align-items-center g-4">
-                    <div class="col-lg-7 sgv-hero-copy">
-                        <p class="sgv-hero-eyebrow mb-2">Panel de control</p>
-                        <h1 class="h2 mb-3">Bienvenido(a), <?php echo htmlspecialchars($_COOKIE["FULLNAME"]); ?></h1>
-                        <p class="lead mb-0">
-                            Este es el estado actual del taller: usuarios con acceso, catálogo de productos
-                            y unidades disponibles en inventario.
-                        </p>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="sgv-hero-art">
-                            <img src="./img/hero.svg" alt="Ilustración de taller" class="img-fluid d-block">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section class="container mt-4">
-            <div class="row g-3 mb-4">
-                <div class="col-md-4">
-                    <div class="sgv-tile sgv-tile-amber">
-                        <div class="sgv-tile-label">Usuarios registrados</div>
-                        <div class="sgv-tile-value"><?php echo $total_usuarios; ?></div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="sgv-tile sgv-tile-pine">
-                        <div class="sgv-tile-label">Productos en catálogo</div>
-                        <div class="sgv-tile-value"><?php echo $total_productos; ?></div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="sgv-tile sgv-tile-graphite">
-                        <div class="sgv-tile-label">Unidades en existencia</div>
-                        <div class="sgv-tile-value"><?php echo $total_existencias; ?></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sgv-panel mb-4">
+            <div class="sgv-panel">
                 <div class="sgv-panel-title">
-                    <h3>Inventario reciente</h3>
-                    <a href="./products.php" class="btn btn-primary btn-sm">Ver todos los productos</a>
+                    <h3>Listado de productos</h3>
+                    <a href="./product_create.php" class="btn btn-success"><i class="bi bi-box-seam"></i> Nuevo</a>
                 </div>
+                <hr>
+
                 <table class="table table-striped sgv-table align-middle mb-0">
                     <thead>
                         <tr>
@@ -117,13 +58,18 @@ foreach ($products as $product) {
                             <th scope="col">Descripción</th>
                             <th scope="col">Stock</th>
                             <th scope="col">Precio</th>
+                            <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
+                            if (isset($_COOKIE["PRODUCTS"])) {
+                                $products = json_decode($_COOKIE["PRODUCTS"], true);
+                            } else {
+                                require_once "./data.php";
+                            }
                             $i = 1;
-                            $preview = array_slice($products, 0, 5);
-                            foreach ($preview as $product) {
+                            foreach ($products as $product) {
                         ?>
                         <tr>
                             <th scope="row"><?php echo $i; ?></th>
@@ -131,6 +77,10 @@ foreach ($products as $product) {
                             <td><?php echo htmlspecialchars($product["Descripcion"]); ?></td>
                             <td><?php echo htmlspecialchars($product["Existencia"]); ?></td>
                             <td class="sgv-price">$<?php echo number_format((float) $product["Precio"], 0, ',', '.'); ?></td>
+                            <td>
+                                <a href="./product_edit.php?product=<?php echo urlencode($product["Codigo"]); ?>" class="btn btn-primary btn-sm">Editar</a>
+                                <a href="./product_delete.php?product=<?php echo urlencode($product["Codigo"]); ?>" class="btn btn-danger btn-sm">Eliminar</a>
+                            </td>
                         </tr>
                         <?php
                                 $i++;

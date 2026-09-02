@@ -1,112 +1,362 @@
-html,
+/* =========================================================
+   SGV Autos - Identidad visual propia
+   Tema: panel de taller / control de inventario
+   ========================================================= */
+
+:root {
+  --sgv-graphite: #21262E;
+  --sgv-graphite-soft: #2E343D;
+  --sgv-canvas: #EFEFEA;
+  --sgv-paper: #FFFFFF;
+  --sgv-amber: #D98A2B;
+  --sgv-amber-dark: #B96F1B;
+  --sgv-pine: #3E6B63;
+  --sgv-pine-dark: #2E5049;
+  --sgv-ink: #23262B;
+  --sgv-muted: #6B7078;
+  --sgv-border: #D8D3C7;
+  --sgv-danger: #B23A34;
+  --sgv-danger-dark: #922E29;
+
+  --sgv-font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --sgv-font-body: "Inter", "Segoe UI", sans-serif;
+  --sgv-font-mono: "IBM Plex Mono", "Courier New", monospace;
+}
+
+html, body {
+  height: 100%;
+}
+
 body {
-    height: 100%;
+  background-color: var(--sgv-canvas);
+  color: var(--sgv-ink);
+  font-family: var(--sgv-font-body);
 }
 
-/*
-Estilos CSS de la plantilla
-*/
-.bd-placeholder-img {
-font-size: 1.125rem;
-text-anchor: middle;
--webkit-user-select: none;
--moz-user-select: none;
-user-select: none;
-}
-@media (min-width: 768px) {
-.bd-placeholder-img-lg {
-    font-size: 3.5rem;
-}
-}
-.b-example-divider {
-width: 100%;
-height: 3rem;
-background-color: #0000001a;
-border: solid rgba(0, 0, 0, 0.15);
-border-width: 1px 0;
-box-shadow:
-    inset 0 0.5em 1.5em #0000001a,
-    inset 0 0.125em 0.5em #00000026;
-}
-.b-example-vr {
-flex-shrink: 0;
-width: 1.5rem;
-height: 100vh;
-}
-.bi {
-vertical-align: -0.125em;
-fill: currentColor;
-}
-.nav-scroller {
-position: relative;
-z-index: 2;
-height: 2.75rem;
-overflow-y: hidden;
-}
-.nav-scroller .nav {
-display: flex;
-flex-wrap: nowrap;
-padding-bottom: 1rem;
-margin-top: -1px;
-overflow-x: auto;
-text-align: center;
-white-space: nowrap;
--webkit-overflow-scrolling: touch;
-}
-.btn-bd-primary {
---bd-violet-bg: #712cf9;
---bd-violet-rgb: 112.520718, 44.062154, 249.437846;
---bs-btn-font-weight: 600;
---bs-btn-color: var(--bs-white);
---bs-btn-bg: var(--bd-violet-bg);
---bs-btn-border-color: var(--bd-violet-bg);
---bs-btn-hover-color: var(--bs-white);
---bs-btn-hover-bg: #6528e0;
---bs-btn-hover-border-color: #6528e0;
---bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
---bs-btn-active-color: var(--bs-btn-hover-color);
---bs-btn-active-bg: #5a23c8;
---bs-btn-active-border-color: #5a23c8;
-}
-.bd-mode-toggle {
-z-index: 1500;
-}
-.bd-mode-toggle .bi {
-width: 1em;
-height: 1em;
-}
-.bd-mode-toggle .dropdown-menu .active .bi {
-display: block !important;
-}
-/*
-FIN estilos CSS de la plantilla
-*/
-
-.form-signin {
-    max-width: 330px;
-    padding: 1rem;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sgv-font-display);
+  color: var(--sgv-graphite);
+  letter-spacing: -0.01em;
 }
 
-.form-signin .form-floating:focus-within {
-    z-index: 2;
+a { color: var(--sgv-pine); }
+a:hover { color: var(--sgv-pine-dark); }
+
+hr {
+  border-top: 1px solid var(--sgv-border);
+  opacity: 1;
 }
 
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+/* ---------------------------------------------------------
+   Barra de navegación
+   --------------------------------------------------------- */
+.sgv-header {
+  background-color: var(--sgv-graphite);
+  border-bottom: 3px solid var(--sgv-amber);
 }
 
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+.sgv-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--sgv-canvas) !important;
+  font-family: var(--sgv-font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
 }
 
-.wp-50 {
-    width: 50px;
+.sgv-brand img,
+.sgv-brand svg {
+  width: 40px;
+  height: 40px;
 }
 
-.wp-100 {
-    width: 100px;
+.sgv-nav .nav-link {
+  color: #C7CBD1;
+  font-weight: 500;
+  padding: 0.5rem 0.9rem;
+  border-radius: 4px;
+  transition: color 0.15s ease, background-color 0.15s ease;
 }
+
+.sgv-nav .nav-link:hover {
+  color: var(--sgv-canvas);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.sgv-nav .nav-link.active {
+  color: var(--sgv-amber);
+  background-color: rgba(217, 138, 43, 0.12);
+}
+
+.sgv-nav .nav-link.disabled {
+  color: #565B63;
+}
+
+.btn-sgv-logout {
+  border: 1px solid #4A505A;
+  color: var(--sgv-canvas);
+  background: transparent;
+}
+
+.btn-sgv-logout:hover {
+  border-color: var(--sgv-amber);
+  color: var(--sgv-amber);
+  background: transparent;
+}
+
+/* ---------------------------------------------------------
+   Botones
+   --------------------------------------------------------- */
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: var(--sgv-amber);
+  border-color: var(--sgv-amber);
+  color: #211705;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--sgv-amber-dark);
+  border-color: var(--sgv-amber-dark);
+  color: #fff;
+}
+
+.btn-success {
+  background-color: var(--sgv-pine);
+  border-color: var(--sgv-pine);
+}
+
+.btn-success:hover,
+.btn-success:focus {
+  background-color: var(--sgv-pine-dark);
+  border-color: var(--sgv-pine-dark);
+}
+
+.btn-danger {
+  background-color: var(--sgv-danger);
+  border-color: var(--sgv-danger);
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: var(--sgv-danger-dark);
+  border-color: var(--sgv-danger-dark);
+}
+
+.btn-outline-light:hover {
+  color: var(--sgv-graphite);
+}
+
+/* ---------------------------------------------------------
+   Hero (portada de bienvenida)
+   --------------------------------------------------------- */
+.sgv-hero {
+  background-color: var(--sgv-graphite);
+  color: var(--sgv-canvas);
+  position: relative;
+  overflow: hidden;
+}
+
+.sgv-hero .sgv-hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.sgv-hero-eyebrow {
+  font-family: var(--sgv-font-mono);
+  color: var(--sgv-amber);
+  font-size: 0.85rem;
+}
+
+.sgv-hero h1 { color: var(--sgv-canvas); }
+.sgv-hero p.lead { color: #C7CBD1; }
+
+.sgv-hero-art {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--sgv-graphite-soft);
+}
+
+/* ---------------------------------------------------------
+   Tarjetas de indicadores (estilo etiqueta de inventario)
+   --------------------------------------------------------- */
+.sgv-tile {
+  background-color: var(--sgv-paper);
+  border: 1px solid var(--sgv-graphite);
+  border-radius: 6px;
+  padding: 1.1rem 1.3rem;
+  box-shadow: 4px 4px 0 var(--sgv-border);
+  height: 100%;
+}
+
+.sgv-tile .sgv-tile-label {
+  font-family: var(--sgv-font-mono);
+  font-size: 0.78rem;
+  color: var(--sgv-muted);
+  margin-bottom: 0.35rem;
+}
+
+.sgv-tile .sgv-tile-value {
+  font-family: var(--sgv-font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--sgv-graphite);
+  line-height: 1;
+}
+
+.sgv-tile .sgv-tile-value small {
+  font-size: 1rem;
+  color: var(--sgv-muted);
+  font-family: var(--sgv-font-body);
+}
+
+.sgv-tile-amber { border-left: 6px solid var(--sgv-amber); }
+.sgv-tile-pine  { border-left: 6px solid var(--sgv-pine); }
+.sgv-tile-graphite { border-left: 6px solid var(--sgv-graphite); }
+
+/* ---------------------------------------------------------
+   Paneles / secciones de contenido
+   --------------------------------------------------------- */
+.sgv-panel {
+  background-color: var(--sgv-paper);
+  border: 1px solid var(--sgv-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.sgv-panel-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.sgv-panel-title h3 { margin-bottom: 0; }
+
+/* ---------------------------------------------------------
+   Tablas
+   --------------------------------------------------------- */
+.table.sgv-table { border-color: var(--sgv-border); }
+
+.sgv-table thead th {
+  font-family: var(--sgv-font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--sgv-muted);
+  border-bottom: 2px solid var(--sgv-graphite);
+  background-color: transparent;
+}
+
+.sgv-table td { vertical-align: middle; }
+
+.sgv-code {
+  font-family: var(--sgv-font-mono);
+  background-color: var(--sgv-canvas);
+  border: 1px solid var(--sgv-border);
+  border-radius: 4px;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.85rem;
+}
+
+.sgv-price { font-family: var(--sgv-font-mono); }
+
+/* ---------------------------------------------------------
+   Formularios
+   --------------------------------------------------------- */
+.form-label {
+  font-weight: 500;
+  color: var(--sgv-graphite);
+}
+
+.form-control:focus {
+  border-color: var(--sgv-amber);
+  box-shadow: 0 0 0 0.2rem rgba(217, 138, 43, 0.2);
+}
+
+/* ---------------------------------------------------------
+   Login
+   --------------------------------------------------------- */
+.sgv-login-wrapper {
+  min-height: 100vh;
+  background-color: var(--sgv-graphite);
+}
+
+.sgv-login-art { background-color: var(--sgv-graphite); }
+
+.sgv-login-card {
+  background-color: var(--sgv-paper);
+  border-radius: 10px;
+  padding: 2.5rem 2.25rem;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.sgv-login-card .sgv-brand {
+  color: var(--sgv-graphite) !important;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.sgv-login-card h1 {
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.sgv-login-sub {
+  text-align: center;
+  color: var(--sgv-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------------------------------------------------------
+   Footer
+   --------------------------------------------------------- */
+.sgv-footer {
+  border-top: 1px solid var(--sgv-border);
+  color: var(--sgv-muted);
+}
+
+.sgv-footer a { color: var(--sgv-graphite); }
+
+/* ---------------------------------------------------------
+   Landing pública (index.php)
+   --------------------------------------------------------- */
+.sgv-slide {
+  background: linear-gradient(135deg, var(--sgv-graphite) 0%, #33383F 100%);
+  min-height: 460px;
+}
+
+.sgv-slide.sgv-slide-alt {
+  background: linear-gradient(135deg, var(--sgv-pine) 0%, #2E5049 100%);
+}
+
+.sgv-slide.sgv-slide-amber {
+  background: linear-gradient(135deg, var(--sgv-amber-dark) 0%, #8A5215 100%);
+}
+
+.sgv-feature-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--sgv-graphite);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sgv-amber);
+  margin-bottom: 1rem;
+}
+
+.featurette-divider { border-top: 1px solid var(--sgv-border); }
+
+/* Utilidades heredadas */
+.wp-50 { width: 50px; }
+.wp-100 { width: 100px; }
